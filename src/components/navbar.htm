@@ -1,0 +1,122 @@
+<style>
+    .logo {
+        width: 5%;
+        height: 5%;
+        display: inline-block;
+    }
+
+    nav {
+        background-color: rgba(192, 192, 192, 0.473);
+        width: 100%;
+        height: 1%;
+        border-radius: 0% 0% 30% 30%;
+
+    }
+
+    nav ul {
+        background-color: white;
+        width: 80%;
+        height: 5%;
+        padding-bottom: 1.5%;
+        border-radius: 0% 0% 60% 60%;
+        margin: -5.5% 15% 0% 15%;
+        text-align: center;
+    }
+
+    nav ul li {
+        width: max-content;
+        display: inline-block;
+        font-size: larger;
+        font-family: 'Courier New', Courier, monospace;
+        margin: 0% 4% 0% 4%;
+
+
+    }
+
+    nav ul li a {
+        width: 20%;
+        text-decoration: none;
+        color: black;
+
+    }
+
+    nav ul li :hover {
+        padding: 0% 15% 0% 15%;
+        text-align: center;
+        background-color: rgb(53 130 196);
+        border-radius: 30% 0%;
+        color: beige;
+    }
+
+    .one a {
+        padding: 0% 15% 0% 15%;
+        text-align: center;
+        background-color: rgb(53 130 196);
+        border-radius: 30% 0%;
+        color: beige;
+
+    }
+
+    .search_box {
+        font-weight: bold;
+        width: 50%;
+        height: 15%;
+        padding: 1% 0%;
+        margin: 1% 25%;
+        position: relative;
+        text-align: center;
+        display: inline-block;
+        border-radius: 30% 0%;
+        border: solid rgb(53 130 196);
+        z-index: +1;
+    }
+
+    .search_box_ginral {
+
+        position: relative;
+        display: block;
+        width: 50%;
+        margin: 2% 25% 0% 25%;
+        z-index: 2;
+    }
+
+    .search_box_ginral img {
+
+        position: relative;
+        width: 50%;
+        height: 50%;
+        display: inline-block;
+        margin: 0% 0% 0% 0%;
+
+
+    }
+
+    .search_button {
+        border-style: none;
+        background-color: rgb(53 130 196);
+        border-radius: 50% 0% 50% 0%;
+        text-align: center;
+        position: absolute;
+        width: 10%;
+        height: 80%;
+        display: inline-block;
+        margin: -7.5% 0% 0% 75%;
+
+    }
+
+</style>
+<nav >
+    <div class="logo"><img src=" ../assets/images/payment_methods/72x72/mollie.png" alt="logo"></div>
+    <ul>
+        <li><a href="#">profiel</a></li>
+        <li><a href="#">bookes</a></li>
+        <li><a href="#">cars</a></li>
+        <li><a href="#">haues</a></li>
+        <li><a href="pages/login.html">log,in</a></li>
+        <li class="one"><a href="index.html">Home</a></li>
+    </ul>
+    <div class="search_box_ginral ">
+        <input type="text" placeholder="search " name="search_box" class="search_box">
+        <button name="search" class="search_button"> <img src=" ../assets/images/search.png" alt="search icon"></button>
+    </div>
+</nav>
