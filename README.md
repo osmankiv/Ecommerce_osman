@@ -51,7 +51,7 @@ ecommerce_project/
 1. **Clone the repository**:
     
 bash
-    git clone https://github.com/yourusername/ecommerce_project.git
+    git clone https://github.com/Ahmedabdulelah/Ecommerce.git
    
 
 2. **Install dependencies (when adding the back end)**:
@@ -75,49 +75,10 @@ bash
 - **src/pages**: Contains the different pages of the website.
 - **src/index.php**: The main entry point for the application.
 
-## Adding the Back End
-
-When moving to work on the back end, you can add the following files to the appropriate folders:
-
 - **services**: To manage the main service operations and functions in the application.
 - **utils**: For helper functions.
 - **config**: For application configuration files.
 
-### Example File Structure After Adding the Back End
-
-ecommerce_project/
-├── src/
-│   ├── assets/
-│   │   ├── css/
-│   │   │   └── styles.css
-│   │   ├── js/
-│   │   │   └── scripts.js
-│   │   └── images/
-│   │       └── logo.png
-│   ├── components/
-│   │   ├── header.php
-│   │   ├── footer.php
-│   │   └── navbar.php
-│   ├── pages/
-│   │   ├── home.php
-│   │   ├── product.php
-│   │   └── cart.php
-│   ├── services/
-│   │   ├── database.php
-│   │   └── productService.php
-│   ├── utils/
-│   │   └── helperFunctions.php
-│   ├── config/
-│   │   └── config.php
-│   └── index.php
-├── public/
-│   ├── index.html
-│   └── favicon.ico
-├── vendor/           # Will be created when running composer install
-├── .gitignore
-├── composer.json
-├── package.json
-└── README.md
 
 ### Additional Usage Instructions
 
