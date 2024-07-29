@@ -432,3 +432,75 @@ nav ul li :hover {
     width: 80px;
     height: 80px;
 }
+
+
+
+/* ------------------------------------------- payment page ----------------------------- */
+
+.payment-page{
+    width: 100vw;
+    min-height: 100vh;
+    background: #34495a;
+    font-size: 1.2me;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    background: white;
+    max-width: 800px;
+    min-height: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.5rem 1.45rem;
+}
+.left{
+    flex-basis: 50%;
+}
+.right{
+    flex-basis: 50%;
+}
+.information{
+    padding: 1rem;
+}
+.payment-disc{
+    margin-top: 1rem;
+    color: #2c3e50;
+}
+.info{
+    width: 100%;
+    padding: 0.5rem 0.7rem;
+    margin: 0.5rem 0;
+    outline: none;
+}
+#option{
+    display: flex;
+    margin-top: 0.5rem ;
+}
+#option select{
+    padding: 0.5rem 0.7rem;
+}
+#option input[type="number"]{
+    padding: 0.5rem 0.7rem;
+    margin-left: 5px;
+}
+.checkout{
+    width: 100%;
+    padding: 0.7rem 1.5rem;
+    background: #34495e;
+    color: white;
+    border: none;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+@media only screen and (max-width:770px) {
+    .container{
+        flex-direction: column;
+    }
+    .payment-responsive{
+        overflow-x: hidden;
+    }
+}
+
+
