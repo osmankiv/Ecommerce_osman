@@ -13,13 +13,6 @@
             font-family: sans-serif;
         }
 
-        /* CSS to style disabled inputs */
-        .disabled-input {
-            background-color: #f0f0f0;
-            color: #a0a0a0;
-            border: 1px solid #d0d0d0;
-            pointer-events: none;
-        }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -61,11 +54,13 @@
                 <h3 class="payment-disc">PAYMENT</h3>
                 <form action="" class="information">
                     Accebted card <br>
-                    <label for="">
+                    <label class="custom-radio">
                         <input type="radio" name="payment-method" id="visa" value="visa">Visa
+                        <span class="radio-inner"></span>
                     </label>
-                    <label for="">
+                    <label class="custom-radio">
                         <input type="radio" name="payment-method" id="bok" value="bok">BOK
+                        <span class="radio-inner"></span>
                     </label>
                     <br><br>
                     <label for="card-number" id="card-number-label">
@@ -86,23 +81,50 @@
                                 <option value="">2024</option>
                             </select>
                         </label>
-                        <label for="">
+                        <label for="cvv" id="cvv-label">
                             CVV
                             <input type="number" id="cvv" class="hidden" name="" placeholder="CVV">
                         </label>
                     </div>
                 </form>
+
+
+                <div class="show-products">
+                    <h3>products</h3>
+                    <select id="product-list"  >
+
+                    </select>
+                    <div class="total-price" id="total-price">
+                        Total: $0.00
+                    </div>
+                </div>
+
+
+
                 <input type="submit" class="checkout" value="Payment">
             </div>
         </div>
     </header>
     <script>
         $(document).ready(function() {
+            let cart = [
+                {name:"product 1",price:10.00},
+                {name:"product 2",price:20.00},
+                {name:"product 3",price:30.00}
+            ];
+
+            let total =0;
+            cart.forEach(function(item){
+                $('#product-list').append(`<option value = "${item.price}">${item.name} - $${item.price.toFixed(2)}</option> `)
+                total +=item.price;
+                $('#total-price').text('Total: $'+total.toFixed(2));
+            });
+
             $('input[name="payment-method"]').change(function() {
                 if ($('#bok').is(':checked')) {
                     $('.info').not('#card-number').addClass('disabled-input').attr('disabled', true);
                     $('#state, #zip-code, #exp-year, #cvv').addClass('disabled-input').attr('disabled',true);
-                    // $('#card-number').attr('placeholder', 'Enter account number');
+                    $('#card-number').attr('placeholder', 'Enter account number');
                     // $('#card-number-label').text('Account number');
 
                     // $('#exp-year-label').text('Exp year (hidden)');
@@ -112,7 +134,7 @@
                     $('.info').removeClass('disabled-input').attr('disabled', false);
                     $("#state, #zip-code, #exp-year, #cvv").removeClass('disabled-input').attr('disabled',false);
 
-                    // $('#card-number').attr('placeholder', 'Enter card number');
+                    $('#card-number').attr('placeholder', 'Enter card number');
                     // $('#card-number-label').text('Credit card number');
 
                     // $('#exp-year-label').text('Exp year');
