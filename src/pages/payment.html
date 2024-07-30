@@ -12,85 +12,114 @@
             box-sizing: border-box;
             font-family: sans-serif;
         }
+
+        /* CSS to style disabled inputs */
+        .disabled-input {
+            background-color: #f0f0f0;
+            color: #a0a0a0;
+            border: 1px solid #d0d0d0;
+            pointer-events: none;
+        }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<header class="payment-page">
 <body class="payment-responsive">
-    <div class="container">
-        <div class="left">
-            <h3>BILLING ADDRESS</h3>
-            <form action="" class="information">
-                Full name
-                <input type="text" class="info" name="" placeholder="Enter name">
+    <header class="payment-page">
+        <div class="container">
+            <div class="left">
+                <h3>BILLING ADDRESS</h3>
+                <form action="" class="information">
+                    Full name
+                    <input type="text" class="info" id="full-name" name="" placeholder="Enter name">
 
-                Email
-                <input type="text" class="info" name="" placeholder="Enter email">
+                    Email
+                    <input type="text" class="info" id="email" name="" placeholder="Enter email">
 
-                address
-                <input type="text" class="info" name="" placeholder="Enter address">
+                    address
+                    <input type="text" class="info" id="address" name="" placeholder="Enter address">
 
-                city
-                <input type="text" class="info" name="" placeholder="Enter city">
-                <div id="option">
+                    city
+                    <input type="text" class="info" id="city" name="" placeholder="Enter city">
+                    <div id="option">
+                        <label for="">
+                            State
+                            <select id="state" class="hidden" name="">
+                                <option value="">Choose state</option>
+                                <option value="">saudi arabia</option>
+                                <option value="">Egypt</option>
+                                <option value="">oman</option>
+                            </select>
+                        </label>
+                        <label for="">
+                            Zip code
+                            <input type="number" id="zip-code" class="hidden" name="" placeholder="Zip code">
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="right">
+                <h3 class="payment-disc">PAYMENT</h3>
+                <form action="" class="information">
+                    Accebted card <br>
                     <label for="">
-                        State
-                        <select name="">
-                            <option value="">Choose state</option>
-                            <option value="">saudi arabia</option>
-                            <option value="">Egypt</option>
-                            <option value="">oman</option>
-                        </select>
+                        <input type="radio" name="payment-method" id="visa" value="visa">Visa
                     </label>
                     <label for="">
-                        Zip code
-                        <input type="number" name="" placeholder="Zip code">
+                        <input type="radio" name="payment-method" id="bok" value="bok">BOK
                     </label>
-                </div>
-            </form>
+                    <br><br>
+                    <label for="card-number" id="card-number-label">
+                        Credit card number
+                        <input type="text" class="info" id="card-number" name="" placeholder="Enter card number">
+                    </label>
+                    Exp month
+                    <input type="text" class="info" id="exp-month" name="" placeholder="Enter Month">
+                    <div id="option">
+                        <label for="exp-year" id="exp-year-label">
+                            Exp year
+                            <select id="exp-year" class="hidden" name="">
+                                <option value="">Choose year</option>
+                                <option value="">2020</option>
+                                <option value="">2021</option>
+                                <option value="">2022</option>
+                                <option value="">2023</option>
+                                <option value="">2024</option>
+                            </select>
+                        </label>
+                        <label for="">
+                            CVV
+                            <input type="number" id="cvv" class="hidden" name="" placeholder="CVV">
+                        </label>
+                    </div>
+                </form>
+                <input type="submit" class="checkout" value="Payment">
+            </div>
         </div>
-        <div class="right">
-            <h3 class="payment-disc">PAYMENT</h3>
-            <form action="" class="information">
+    </header>
+    <script>
+        $(document).ready(function() {
+            $('input[name="payment-method"]').change(function() {
+                if ($('#bok').is(':checked')) {
+                    $('.info').not('#card-number').addClass('disabled-input').attr('disabled', true);
+                    $('#state, #zip-code, #exp-year, #cvv').addClass('disabled-input').attr('disabled',true);
+                    // $('#card-number').attr('placeholder', 'Enter account number');
+                    // $('#card-number-label').text('Account number');
 
+                    // $('#exp-year-label').text('Exp year (hidden)');
+                    // $('#cvv-label').text('CVV (hidden)');
 
-                Accebted card <br>
-                <!-- <img src="" alt="" width="100"> -->
-                <!-- <img src="" alt="" width="50"> -->
-                <label for="">
-                    <input type="radio" value="visa">Visa
-                </label>
-                <label for="">
-                    <input type="radio" name="" id="" value="bok">BOK
-                </label>
-                <br><br>
+                } else {
+                    $('.info').removeClass('disabled-input').attr('disabled', false);
+                    $("#state, #zip-code, #exp-year, #cvv").removeClass('disabled-input').attr('disabled',false);
 
-                Credit card number
-                <input type="text" class="info" name="" placeholder="Enter card number">
+                    // $('#card-number').attr('placeholder', 'Enter card number');
+                    // $('#card-number-label').text('Credit card number');
 
-                Exp month
-                <input type="text" class="info" name="" placeholder="Enter Month">
-                <div id="option">
-                    <label for="">
-                        Exp year
-                        <select name="">
-                            <option value="">Choose year</option>
-                            <option value="">2020</option>
-                            <option value="">2021</option>
-                            <option value="">2022</option>
-                            <option value="">2023</option>
-                            <option value="">2024</option>
-                        </select>
-                    </label>
-                    <label for="">
-                        CVV
-                        <input type="number" name="" placeholder="CVV">
-                    </label>
-                </div>
-            </form>
-            <input type="submit" class="checkout" value="Payment">
-        </div>
-    </div>
-    
+                    // $('#exp-year-label').text('Exp year');
+                    // $('#cvv-label').text('CVV');
+                }
+            });
+        });
+    </script>
 </body>
-</header>
 </html>
