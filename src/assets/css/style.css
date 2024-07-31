@@ -440,7 +440,7 @@ nav ul li :hover {
 .payment-page{
     width: 100vw;
     min-height: 100vh;
-    background: #34495a;
+    background: rgb(53 130 196);
     font-size: 1.2me;
     display: flex;
     justify-content: center;
@@ -513,7 +513,7 @@ select:focus,input[type="number"]:focus{
 .checkout{
     width: calc(100% - 1.5rem);
     padding: 0.7rem;
-    background: #2c3e50;
+    background: rgb(53 130 196);
     color: white;
     border: none;
     border-radius: 8px;
@@ -524,7 +524,7 @@ select:focus,input[type="number"]:focus{
     transition: background-color 0.3s ease;
 }
 .checkout:hover{
-    background: #34495e
+    background: rgb(10, 84, 149)
 }
 .disabled-input {
     background-color: #f0f0f0;
