@@ -573,13 +573,10 @@ select:focus,input[type="number"]:focus{
     font-weight: bold;
     color: #333;
 }
-/* تنسيق لل radios */
-/* إخفاء الأزرار الأصلية للظهور بتنسيق مخصص */
 input[type="radio"] {
     display: none;
 }
 
-/* تنسيق الأزرار المخصصة */
 .custom-radio {
     display: inline-flex;
     align-items: center;
@@ -587,7 +584,6 @@ input[type="radio"] {
     margin: 0.5rem 0;
 }
 
-/* شكل الدائرة الفارغة */
 .custom-radio .radio-inner {
     width: 20px;
     height: 20px;
@@ -599,13 +595,11 @@ input[type="radio"] {
     transition: background-color 0.3s, border-color 0.3s;
 }
 
-/* شكل الدائرة عند تحديدها */
 input[type="radio"]:checked + .radio-inner {
     background-color: #34495e;
     border-color: #34495e;
 }
 
-/* شكل النقطة داخل الدائرة عند تحديدها */
 input[type="radio"]:checked + .radio-inner::after {
     content: '';
     display: block;
@@ -619,12 +613,10 @@ input[type="radio"]:checked + .radio-inner::after {
     transform: translate(-50%, -50%);
 }
 
-/* إضافة تأثيرات عند التمرير */
 .custom-radio:hover .radio-inner {
     border-color: #2c3e50;
 }
 
-/* تنسيق النصوص المرتبطة بالأزرار */
 .custom-radio span {
     font-size: 1rem;
     color: #34495e;
