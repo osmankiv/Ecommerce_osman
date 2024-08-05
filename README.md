@@ -90,6 +90,6 @@ sql
     CREATE DATABASE ecommerce;
    
 
-2. Update the configuration file `src/config/config.php` with your database details.
+2. Update the configuration file `config/config.php` with your database details.
 
 3. Run the necessary SQL scripts to create the required tables in your database.
