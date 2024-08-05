@@ -52,7 +52,7 @@ nav ul li a {
     width: 20%;
     text-decoration: none;
     color: black;
-
+    transition: background-color 0.3s, color 0.3s;
 }
 
 nav ul li :hover {
