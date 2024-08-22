@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/customer_cart.css">
+    <title>Customer Cart</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="">Products</a></li>
+                <li><a href="" class="active">Cart</a></li>
+                <li><a href="../pages/payment.html">Checkout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="cart-container">
+            <h1>Your Shopping Cart</h1>
+            <table id="cart-items">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="cart-sumarry">
+                <p id="total-price">Total: 0.00$</p>
+                <a href="payment.html" class="checkout-button">Procced To Checkout</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>&copy; 2024 Your Store. All rights reserved.</footer>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../assets/js/customer_cart.js"></script>
+</body>
+</html>
