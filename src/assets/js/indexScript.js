@@ -47,6 +47,14 @@ function addOrders() {
     button2.setAttribute("onclick", "cont(1)")
     div3.appendChild(button2);
     button2.innerHTML = "+";
+
+    let button3 = document.createElement("button")
+    button3.setAttribute("class", "delete")
+    div3.appendChild(button3);
+    let img2 = document.createElement("img");
+    button3.appendChild(img2);
+    img2.setAttribute("src", "assets/images/delete1.png")
+    button3.innerHTML = "X";
 }
 function cont(a) {
 

@@ -31,7 +31,7 @@ body {
     background-color: rgba(235, 235, 235, 0.815);
     width: 100%;
     height: 100%;
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
 
 
 }
@@ -88,6 +88,10 @@ nav ul li :hover {
     background-color: rgb(53 130 196);
     border-radius: 30% 0%;
     color: beige;
+}
+
+nav ul .shopping :hover {
+    border: 0cqh;
 }
 
 .one a {
@@ -428,6 +432,38 @@ nav ul li :hover {
 
 }
 
+/* ads */
+.ads {
+    width: 100%;
+    height: 15px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 0% 0% 100% 100%;
+}
+
+.ads_content {
+
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(4, 66, 121);
+    perspective: 100px;
+    animation: ads_content 15s infinite linear;
+
+}
+
+@keyframes ads_content {
+    0% {
+        transform: translateX(-50%);
+
+    }
+
+    100% {
+        transform: translateX(105%);
+
+    }
+
+}
+
+/* ads */
+
 .items {
     width: 100%;
     display: inline-block;
@@ -495,103 +531,103 @@ nav ul li :hover {
 
 }
 
+.items {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
 
 .part_prodect {
     display: flex;
-    scroll-behavior: smooth;
-    position: relative;
+    gap: 16px;
+    align-items: flex-start;
 }
 
+
 .card_prodect {
-    margin: 2% 1% 0% 0.5%;
-    padding: 10px;
     display: inline-block;
     position: relative;
-    width: 30%;
-    height: 70%;
+    width: 200px;
+    height: auto;
     border: solid rgb(53 130 196);
     border-top: none;
     border-bottom: none;
     border-radius: 15px;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+    box-shadow: rgb(0, 0, 0) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 0px 0px;
     overflow: hidden;
     transition: .1s ease-in-out;
-
+    margin: 0 10px;
 }
 
 .card_prodect:hover {
-    margin: 0% 1% 0% 0.5%;
-    border: solid#36333dee;
-    border-top: none;
-    border-bottom: none;
-    width: 45%;
-    height: 87%;
+    width: 210px;
+    /* border: solid #36333dee; */
     background: rgba(53, 129, 196, 0.438);
-
-
+    box-shadow: rgb(4, 78, 240) 0px 5px 5px, rgba(9, 186, 199, 0.07) 0px 10px 10px, rgba(0, 0, 0, 0.07) 0px 20px 20px, rgba(0, 0, 0, 0.07) 0px 40px 40px, rgba(0, 0, 0, 0.07) 0px 60px 60px;
 }
 
+
 .card_prodect img {
-    width: 90%;
-    height: 50%;
+    width: 80%;
+    height: auto;
     border-radius: 10%;
-    margin: 5% 5%;
+    margin: 2% 10%;
 }
 
 .card_prodect:hover img {
-    transition: .6s ease-in-out;
-    transform: translateY(10em);
-    transform: rotate(10deg);
 
+    transform: rotateX(360deg) translateY(5px);
+    transition: 0.6s ease-in-out;
+    /* transform: translateY(-10px); */
 }
 
 .name_prodect {
-    display: inline-block;
-    width: 99%;
     font-weight: bolder;
     color: rgb(0, 0, 0);
-    margin: 10px 10px;
+    margin: 10px;
+    text-align: center;
 }
 
 .name_discraption {
-    width: 87%;
-    display: inline-block;
     font-weight: 50%;
-    color: rgb(0, 0, 0);
-    margin: 0px 100px 30px 8px;
+    color: rgb(14, 13, 13);
+    margin: 0 10px;
+    text-align: center;
 }
 
 .pric {
-    width: 10%;
     color: brown;
     font-size: larger;
-    position: absolute;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    display: inline-block;
-    margin: -3% 58% 0% 37%;
+    margin: 10px;
+    text-align: center;
 }
 
 .card_prodect button {
-    width: 30%;
+    display: inline-block;
+    width: calc(50% - 10px);
     font-size: 12px;
     height: 25px;
-    margin: 4% 8%;
+    margin: 4% 0;
     text-align: center;
     color: rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
-    border-radius: 10%;
-    border: solid;
-    border-left: 0px;
-    border-right: 0px;
+    border-radius: 5px;
+    border: solid 1px rgb(0, 0, 0);
+}
+
+
+.card_prodect .add_to_card {
+    background-color: rgb(53, 130, 196);
+    color: white;
+    border: solid 1px rgb(53, 130, 196);
 }
 
 .card_prodect button:hover {
-    background-color: rgb(53, 130, 196);
+    background-color: rgb(4, 52, 94);
     color: white;
-    border: solid rgb(4, 52, 94);
-    border-left: 0px;
-    border-right: 0px;
-
+    border: solid 1px rgb(4, 52, 94);
 }
 
 .main_tic {
