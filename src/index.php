@@ -11,25 +11,10 @@
 <?php
 // imprt database conntion
 include "../config/database.php";
+//search
 
 ?>
     <body>
-        <!--<nav class="nav">
-
-            <script type="text/javascript">
-                let objict_of_XML = new XMLHttpRequest();// 'XMLHttpRequest' انشئه كائن  
-                objict_of_XML.onreadystatechange = function () { // يعين دالة يتم استدعاؤها كلما تغيرت حالة الطلب
-                    if (objict_of_XML.readyState === 4 && objict_of_XML.status === 200) {
-                        document.querySelector(".nav").innerHTML = objict_of_XML.responseText;
-                        console.log(document.getElementsByClassName("nav").innerHTML)
-                        //	window.location.href = 'data_indx.php?id='+dtaa_search_box+'';
-                    }
-                };
-                objict_of_XML.open('GET', 'components/navbar.htm');
-                objict_of_XML.send();
-
-            </script>
-        </nav>-->
 
         <nav>
             <div class="logo"><img src=" assets/images/payment_methods/72x72/mollie.png" alt="logo"></div>
@@ -48,11 +33,59 @@ include "../config/database.php";
                     </div>
                 </li>
             </ul>
-            <div class="search_box_ginral ">
-                <input type="text" placeholder="search " name="search_box" class="search_box">
-                <button name="search" class="search_button"> <img src=" assets/images/search.png"
-                        alt="search icon"></button>
-            </div>
+            <form action="index.php" method="POST"  class="form">
+                <div class="search_box_ginral ">
+                    <input type="text" placeholder="search " name="search_box" class="search_box">
+                    <button name="search" class="search_button" type="submit"> <img src=" assets/images/search.png"
+                            alt="search icon"></button>
+                              
+                </div>
+                
+            </form>
+            <?php
+                if(isset($_POST['search'])){
+                    $search_box =  $_POST['search_box'];
+                    $stmt ="SELECT * FROM `products` WHERE products_name LIKE '%$search_box%'  ";
+                    $result=$conn->query($stmt);
+                    if($result->num_rows > 0 ){
+                        while($row = $result->fetch_assoc()){
+                            $result_search= $row["products_name"];
+                            $products_name=       $row["products_name"];
+                            $products_description=$row["products_description"];
+                            $products_price=      $row["products_price"];
+                            $products_image_url=  $row["products_image_url"];
+                            $products_type=       $row["products_type"];                    
+                            if($search_box != ""){
+                                echo'  
+                                     <div class="items">
+                                         <div class="sub_items_contner">
+                                             <div class="part_prodect">
+                                                 <div class="card_prodect">
+                                                   <a href="pages/product_details.html"> <!-- need to code-->
+                                                       <img src=" '.$products_image_url.'"
+                                                           alt="">
+                                                       <div class="name_prodect"><'.$products_name.'</div>
+                                                       <div class="name_discraption"><'. $products_description.   '<div>
+
+                                                       <div class="pric">'.$products_price.'</div>
+                                                   </a>
+
+                                                   <button type="submit" class="buy"     name="buy_prodcet">buy</    button>
+                                                   <button type="submit" class="add_to_card"     name="buy_prodcet"
+                                                       onclick="addOrders()">add to
+                                                       card</button>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                ';
+                            }
+                        }   
+                    }
+
+                }
+                              
+                              ?>
         </nav>
         <div class="ads">
             <div class="ads_content">
