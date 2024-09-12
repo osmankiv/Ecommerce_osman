@@ -554,38 +554,6 @@ nav ul .shopping :hover {
 
 }
 
-.banner .product {
-    /* background-color: rgb(217, 255, 0); */
-    /* background: url("images/cap.jpg"); */
-    width: 60%;
-    height: 80%;
-    position: absolute;
-    margin: 10% 20%;
-    /* transform: translateX(-50%); */
-    z-index: 1;
-    transition: 0.7;
-
-}
-
-.banner .product .sada {
-    background-color: brown;
-
-    background:
-        url("/src/assets/images/palsten.png")
-        /* -100px 90px*/
-        ,
-        url("/src/assets/images/proudct 1.png");
-    background-size: auto 100%;
-    width: 70%;
-    /* height: 40%; */
-    aspect-ratio: 1/3;
-    background-blend-mode: multiply;
-    mask-image: url("src/assets/images/pattern-placeholders/proudct 1.png");
-    mask-size: auto 100%;
-
-}
-
-/* .................. */
 
 
 .card_prodect {
