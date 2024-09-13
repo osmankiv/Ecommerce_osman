@@ -23,7 +23,7 @@ include "../config/database.php";
                 <li><a href="#">profiel</a></li>
                 <li><a href="#bookes">bookes</a></li>
                 <li><a href="#cars">cars</a></li>
-                <li><a href="#">haues</a></li>
+                <li><a href="pages/control_panel.php">control</a></li>
                 <li><a href="pages/login.html">log,in</a></li>
                 <li class="one"><a href="index.html">Home</a></li>
                 <li>
@@ -139,6 +139,7 @@ include "../config/database.php";
                 <section>
                     <article>
                         <h3 id="cars"> part1 </h3>
+                                <div class="items">
                        
                                     <?php
                                         $stmt= "SELECT * FROM `products`";
@@ -154,7 +155,7 @@ include "../config/database.php";
                                             
 
                                                 echo'  
-                                                    <div class="items">
+                                                 
                                                         <div class="sub_items_contner">
                                                             <div class="part_prodect">
                                                                 <div class="card_prodect">
@@ -174,13 +175,14 @@ include "../config/database.php";
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                   
                                                     ';
                                                     
                                             }
                                         }
 
                                     ?>
+                                </div>
                                  
       <!--------------------------------------------------------------------------------------------------->
 
