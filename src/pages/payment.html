@@ -12,97 +12,94 @@
             box-sizing: border-box;
             font-family: sans-serif;
         }
-
+        
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body class="payment-responsive">
     <header class="payment-page">
         <div class="container">
-            <div class="left">
-                <h3>BILLING ADDRESS</h3>
-                <form action="" class="information">
+            <form action="process_payment.php" method="POST" class="information">
+                <div class="left">
+                    <h3>BILLING ADDRESS</h3>
                     Full name
-                    <input type="text" class="info" id="full-name" name="" placeholder="Enter name">
+                    <input type="text" class="info" id="full-name" name="full_name" placeholder="Enter name">
 
                     Email
-                    <input type="text" class="info" id="email" name="" placeholder="Enter email">
+                    <input type="text" class="info" id="email" name="email" placeholder="Enter email">
 
-                    address
-                    <input type="text" class="info" id="address" name="" placeholder="Enter address">
+                    Address
+                    <input type="text" class="info" id="address" name="address" placeholder="Enter address">
 
-                    city
-                    <input type="text" class="info" id="city" name="" placeholder="Enter city">
+                    City
+                    <input type="text" class="info" id="city" name="city" placeholder="Enter city">
+                    
                     <div id="option">
                         <label for="">
                             State
-                            <select id="state" class="hidden" name="">
+                            <select id="state" name="state">
                                 <option value="">Choose state</option>
-                                <option value="">saudi arabia</option>
-                                <option value="">Egypt</option>
-                                <option value="">oman</option>
+                                <option value="saudi_arabia">Saudi Arabia</option>
+                                <option value="egypt">Egypt</option>
+                                <option value="oman">Oman</option>
                             </select>
                         </label>
                         <label for="">
                             Zip code
-                            <input type="number" id="zip-code" class="hidden" name="" placeholder="Zip code">
+                            <input type="number" id="zip-code" name="zip_code" placeholder="Zip code">
                         </label>
                     </div>
-                </form>
-            </div>
-            <div class="right">
-                <h3 class="payment-disc">PAYMENT</h3>
-                <form action="" class="information">
-                    Accebted card <br>
+                </div>
+                <div class="right">
+                    <h3 class="payment-disc">PAYMENT</h3>
+                    Accepted card <br>
                     <label class="custom-radio">
-                        <input type="radio" name="payment-method" id="visa" value="visa">Visa
+                        <input type="radio" name="payment_method" id="visa" value="visa">Visa
                         <span class="radio-inner"></span>
                     </label>
                     <label class="custom-radio">
-                        <input type="radio" name="payment-method" id="bok" value="bok">BOK
+                        <input type="radio" name="payment_method" id="bok" value="bok">BOK
                         <span class="radio-inner"></span>
                     </label>
                     <br><br>
                     <label for="card-number" id="card-number-label">
                         Credit card number
-                        <input type="text" class="info" id="card-number" name="" placeholder="Enter card number">
+                        <input type="text" class="info" id="card-number" name="card_number" placeholder="Enter card number">
                     </label>
                     Exp month
-                    <input type="text" class="info" id="exp-month" name="" placeholder="Enter Month">
+                    <input type="text" class="info" id="exp-month" name="exp_month" placeholder="Enter Month">
                     <div id="option">
                         <label for="exp-year" id="exp-year-label">
                             Exp year
-                            <select id="exp-year" class="hidden" name="">
+                            <select id="exp-year" name="exp_year">
                                 <option value="">Choose year</option>
-                                <option value="">2020</option>
-                                <option value="">2021</option>
-                                <option value="">2022</option>
-                                <option value="">2023</option>
-                                <option value="">2024</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
                             </select>
                         </label>
                         <label for="cvv" id="cvv-label">
                             CVV
-                            <input type="number" id="cvv" class="hidden" name="" placeholder="CVV">
+                            <input type="number" id="cvv" name="cvv" placeholder="CVV">
                         </label>
                     </div>
-                </form>
 
-
-                <div class="show-products">
-                    <h3>products</h3>
-                    <select id="product-list"  >
-
-                    </select>
-                    <div class="total-price" id="total-price">
-                        Total: $0.00
+                    <div class="show-products">
+                        <h3>Products</h3>
+                        <select id="product-list" name="products">
+                            <!-- سيتم تعبئة الخيارات عبر JavaScript -->
+                        </select>
+                        <div class="total-price" id="total-price">
+                            Total: $0.00
+                        </div>
+                        <input type="hidden" name="total_price" id="total-price-input" value="0.00">
                     </div>
+
+                    <input type="submit" class="checkout" value="Payment">
                 </div>
-
-
-
-                <input type="submit" class="checkout" value="Payment">
-            </div>
+            </form>
         </div>
     </header>
     <script>
@@ -113,32 +110,24 @@
                 {name:"product 3",price:30.00}
             ];
 
-            let total =0;
-            cart.forEach(function(item){
-                $('#product-list').append(`<option value = "${item.price}">${item.name} - $${item.price.toFixed(2)}</option> `)
-                total +=item.price;
-                $('#total-price').text('Total: $'+total.toFixed(2));
+            let total = 0;
+            cart.forEach(function(item) {
+                $('#product-list').append(`<option value="${item.price}">${item.name} - $${item.price.toFixed(2)}</option>`);
+                total += item.price;
+                $('#total-price').text('Total: $' + total.toFixed(2));
             });
 
-            $('input[name="payment-method"]').change(function() {
+            $('#total-price-input').val(total.toFixed(2)); // تعيين القيمة في الحقل المخفي
+
+            $('input[name="payment_method"]').change(function() {
                 if ($('#bok').is(':checked')) {
                     $('.info').not('#card-number').addClass('disabled-input').attr('disabled', true);
-                    $('#state, #zip-code, #exp-year, #cvv').addClass('disabled-input').attr('disabled',true);
+                    $('#state, #zip-code, #exp-year, #cvv').addClass('disabled-input').attr('disabled', true);
                     $('#card-number').attr('placeholder', 'Enter account number');
-                    // $('#card-number-label').text('Account number');
-
-                    // $('#exp-year-label').text('Exp year (hidden)');
-                    // $('#cvv-label').text('CVV (hidden)');
-
                 } else {
                     $('.info').removeClass('disabled-input').attr('disabled', false);
-                    $("#state, #zip-code, #exp-year, #cvv").removeClass('disabled-input').attr('disabled',false);
-
+                    $("#state, #zip-code, #exp-year, #cvv").removeClass('disabled-input').attr('disabled', false);
                     $('#card-number').attr('placeholder', 'Enter card number');
-                    // $('#card-number-label').text('Credit card number');
-
-                    // $('#exp-year-label').text('Exp year');
-                    // $('#cvv-label').text('CVV');
                 }
             });
         });
