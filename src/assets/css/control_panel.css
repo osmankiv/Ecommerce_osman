@@ -1,0 +1,99 @@
+h1 {
+    margin: 10px 40%;
+}
+
+.titel_1 {
+    background-color: black;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+}
+
+.titel_1 .ADD,
+.mangmant {
+    padding: 50px;
+    color: aliceblue;
+    text-align: center;
+    width: 49%;
+
+
+}
+
+.titel_1 .mangmant {
+    margin-left: 70%;
+}
+
+.form {
+    display: inline-block;
+    width: 20%;
+    height: 100%;
+    margin: 1%;
+    background-color: rgb(53 130 196);
+}
+
+
+.form h3 {
+    width: max-content;
+    color: rgb(0, 0, 0);
+    font-size: large;
+    font-weight: bold;
+    margin-left: 5px;
+    border: 3px solid rebeccapurple;
+}
+
+.form label {
+    display: block;
+    padding: 10px;
+    color: rgb(233, 233, 233);
+}
+
+.form input {
+    margin-left: 10px;
+}
+
+.form button {
+    border: none;
+    background-color: black;
+    color: aliceblue;
+    width: 100%;
+    height: 30px;
+    padding: 10%;
+}
+
+.contenr {
+    width: 75%;
+    display: inline-block;
+    position: relative;
+
+}
+
+.form2 {
+    position: relative;
+    display: flexbox;
+    border: 1px solid black;
+    width: 78%;
+    height: 100%;
+    gap: 6px;
+    align-items: flex-start;
+    /* overflow: hidden; */
+
+}
+
+.display {
+    background-color: rgb(53 130 196);
+}
+
+.display th,
+td {
+    width: 9.75%;
+    /* 78% / 8 */
+    border: 0.5px solid black;
+}
+
+.display td { 
+    border-bottom: none;
+    border-top: none;
+    border-left: none;
+
+    
+}
