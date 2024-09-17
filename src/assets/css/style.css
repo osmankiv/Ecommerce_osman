@@ -538,7 +538,6 @@ nav ul .shopping :hover {
     border: 1px solid #ddd;
 }
 
-
 .part_prodect {
     display: flex;
     gap: 16px;
@@ -547,14 +546,11 @@ nav ul .shopping :hover {
 
 /* .........3D......... */
 
-
-
-
 .card_prodect {
     display: inline-block;
     position: relative;
-    width: 200px;
-    height: auto;
+    width: 250px; 
+    height: auto; 
     border: solid rgb(53 130 196);
     border-top: none;
     border-bottom: none;
@@ -562,75 +558,70 @@ nav ul .shopping :hover {
     box-shadow: rgb(0, 0, 0) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 0px 0px;
     overflow: hidden;
     transition: .1s ease-in-out;
-    margin: 0 10px;
+    margin: 0 10px; 
 }
 
 .card_prodect:hover {
     width: 210px;
-    /* border: solid #36333dee; */
+    border: solid #36333dee;
     background: rgba(53, 129, 196, 0.438);
     box-shadow: rgb(4, 78, 240) 0px 5px 5px, rgba(9, 186, 199, 0.07) 0px 10px 10px, rgba(0, 0, 0, 0.07) 0px 20px 20px, rgba(0, 0, 0, 0.07) 0px 40px 40px, rgba(0, 0, 0, 0.07) 0px 60px 60px;
 }
 
 .card_prodect a {
     text-decoration: none;
-
 }
 
-
 .card_prodect img {
-    width: 80%;
+    width: 100%; 
     height: auto;
     border-radius: 10%;
-    margin: 2% 10%;
+    margin: 0;
 }
 
 .card_prodect:hover img {
-
-    transform: rotateX(360deg) translateY(5px);
-    transition: 0.6s ease-in-out;
-    /* transform: translateY(-10px); */
+    transition: .6s ease-in-out;
+    transform: translateY(-10px) rotate(10deg);
 }
 
 .name_prodect {
     font-weight: bolder;
     color: rgb(0, 0, 0);
     margin: 10px;
-    text-align: center;
+    text-align: center; 
 }
 
 .name_discraption {
     font-weight: 50%;
-    color: rgb(14, 13, 13);
+    color: rgb(0, 0, 0);
     margin: 0 10px;
-    text-align: center;
+    text-align: center; 
 }
 
 .pric {
     color: brown;
     font-size: larger;
     margin: 10px;
-    text-align: center;
+    text-align: center; 
 }
 
 .card_prodect button {
-    display: inline-block;
-    width: calc(50% - 10px);
+    display: inline-block; 
+    width: calc(50% - 10px); 
     font-size: 12px;
     height: 25px;
-    margin: 4% 0;
+    margin: 4% 0; 
     text-align: center;
     color: rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
-    border-radius: 5px;
+    border-radius: 5px; 
     border: solid 1px rgb(0, 0, 0);
 }
 
-
 .card_prodect .add_to_card {
-    background-color: rgb(53, 130, 196);
-    color: white;
-    border: solid 1px rgb(53, 130, 196);
+    background-color: rgb(53, 130, 196); 
+    color: white; 
+    border: solid 1px rgb(53, 130, 196); 
 }
 
 .card_prodect button:hover {
