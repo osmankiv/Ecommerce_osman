@@ -9,21 +9,80 @@
         <link rel="stylesheet" href="../assets/css/control_panel.css">
     </header>
     <body>
+        
         <?php
             //clone navbar
             include "../components/navbar.php";
             //clone databies conntion
-            include "../../config/database.php"
+            include "../../config/database.php";
+            echo"<h1>welcom admin!</h1>";
+              //delete
+           
+              if(isset($_POST['delete'])){
+                $id=$_POST['pr_id'];
+                $delete ="DELETE FROM `products` WHERE `id` = $id ";
+                $conn->query($delete);
+              }
+              //update
+              
+               if(isset($_POST['updata'])){
+                $id=$_POST['pr_id'];
+
+                 $stmt ="SELECT * FROM `products` WHERE `id` = $id  ";
+                        $result=$conn->query($stmt);
+                        if($result->num_rows > 0 ){
+                            while($row = $result->fetch_assoc()){
+                                echo"
+                                    <form action=control_panel.php method=POST  class=form >
+                                        <h3> updata PRODUCTS</h3>
+
+                                        <label>products name</label>
+                                        <input type=text name=products_name value=".$row['products_name']."></input>
+
+
+                                         <label>products descrription</label>
+                                        <input type=text name=products_descrription  value=".$row['products_description']."></      input>
+
+                                         <label>products price</label>
+                                        <input type=number name=products_price  value=".$row['products_price']."></input>
+                                        <div class=rite>
+                                            <label>products image</label>
+                                            <input type=file name=products_image  value=".$row['products_image_url']."></input>
+
+                                            <label>products type </label>
+                                            <input type=text name=products_type  value=".$row['products_type']."></input>
+                                        </div>
+
+                                         <button name=Update_data> Update</button>
+                
+                                    </form>";
+                                    if(isset($_POST['Update_data'])){
+                                        $id=$row['id'];
+                                        $updata="UPDATE `products` SET `products_name`='[value-2]',`products_description`='[value-3]',`products_price`='[value-4]',`products_image_url`='[value-5]',`products_type`='[value-6]' WHERE `id`=$id";
+                                        echo"dddd";
+                                    }
+                            }
+                        }
+                        
+                        
+               }
+               
+
+                       
+              
+                    
         ?>
         <main>
-            <h1>welcom admin!</h1>
+            
             <form action="control_panel.php" method="POST"  class="form" >
-                <div>
+                <div class="funtion">
                     <label>delete /updata</label>
                     <input type="number" name="pr_id" >
                     <br>
                     <button name=delete> delete </button>
+
                     <button name=updata> updata </button>
+                    <br>
                 </div>
             </form>
                 
@@ -43,14 +102,7 @@
 
             }
 
-            //delete
-           
-              if(isset($_POST['delete'])){
-                $id=
-                $delete ="DELETE FROM `products` WHERE `id`$ ";
-                $conn->query($delete);
-              }
-                                  
+                        
                
                 
                 

@@ -56,8 +56,14 @@ h1 {
     background-color: black;
     color: aliceblue;
     width: 100%;
-    height: 30px;
-    padding: 10%;
+    height: 10px;
+    padding: 8%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    text-align: center;
+}
+.funtion{
+    display: inline-block;
 }
 
 .contenr {
@@ -83,17 +89,19 @@ h1 {
     background-color: rgb(53 130 196);
 }
 
-.display th,
-td {
+th {
     width: 9.75%;
     /* 78% / 8 */
     border: 0.5px solid black;
 }
 
-.display td { 
+td { 
+    border: 0.5px solid black;
     border-bottom: none;
     border-top: none;
     border-left: none;
+    width: 17%;
+    height: inherit;
 
     
 }
