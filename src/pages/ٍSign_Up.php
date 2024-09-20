@@ -1,11 +1,11 @@
 <?php
-include '/config/config.php'; 
+include '/config/database.php'; 
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $username = $_POST['user'];
+    $username = $_POST['username'];
     $email = $_POST['email'];
-    $password_hash = $_POST['password_hash'];
-    $repassword = $_POST['user_repassword'];
+    $password = $_POST['password'];
+    $repassword = $_POST['repassword'];
     $gender = $_POST['gender'];
 
     if ($password !== $repassword) {
@@ -15,10 +15,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO user (username, email, phone, password_hash, gender) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO user (username, email, hashed_password, gender) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
 
-    $stmt->bind_param('sssss', $username, $email, $phone, $password_hash, $gender);
+    $stmt->bind_param('sssss', $username, $email,$password_hash, $gender);
 
     if ($stmt->execute()) {
         echo 'Registration successful';
