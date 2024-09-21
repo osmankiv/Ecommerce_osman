@@ -45,7 +45,7 @@ $sql_query_create_table3 = "CREATE TABLE IF NOT EXISTS orders (
     id INT(6) AUTO_INCREMENT PRIMARY KEY,
     user_id INT(6),
     total_price DECIMAL(10,2),
-    payment_method ENUM('visa','Bok')
+    payment_method ENUM('visa','Bok'),
     FOREIGN KEY (user_id) REFERENCES users(id)
 )";
 
@@ -53,9 +53,9 @@ $sql_query_create_table4 = "CREATE TABLE IF NOT EXISTS order_items (
     id INT(6) AUTO_INCREMENT PRIMARY KEY,
     order_id INT(6),
     product_id INT(6),
-    price DECIMAL(10,2)
-    FOREIGN KEY (order_id) REFERENCES orders(id)
-    FOREIGN KEY (product_id) REFERENCES products(id) 
+    price DECIMAL(10,2),
+    FOREIGN KEY (order_id) REFERENCES orders(id),
+    FOREIGN KEY (product_id) REFERENCES products(id)
 )";
 
 // تنفيذ استعلامات إنشاء الجداول
@@ -68,5 +68,5 @@ if ($conn->query($sql_query_create_table1) === TRUE &&
     die ("Error creating tables: " . $conn->error);
 }
 
-$conn->close();
+// $conn->close();
 ?>

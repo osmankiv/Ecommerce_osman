@@ -1,5 +1,5 @@
 <?php
-include '/config/database.php'; 
+include './../../config/database.php';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $username = $_POST['username'];
@@ -15,10 +15,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO user (username, email, hashed_password, gender) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (username, email, password_hash, gender) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
 
-    $stmt->bind_param('sssss', $username, $email,$password_hash, $gender);
+    $stmt->bind_param('ssss', $username, $email,$hashed_password, $gender);
 
     if ($stmt->execute()) {
         echo 'Registration successful';
