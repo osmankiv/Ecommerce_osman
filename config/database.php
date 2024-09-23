@@ -28,7 +28,7 @@ $sql_query_create_table1 = "CREATE TABLE IF NOT EXISTS products (
     id INT(6) AUTO_INCREMENT PRIMARY KEY,
     products_name VARCHAR(100),
     products_description TEXT,
-    products_price INT,
+    products_price DECIMAL(10,2),
     products_image_url VARCHAR(200),
     products_type VARCHAR(100)
 )";
@@ -53,6 +53,7 @@ $sql_query_create_table4 = "CREATE TABLE IF NOT EXISTS order_items (
     id INT(6) AUTO_INCREMENT PRIMARY KEY,
     order_id INT(6),
     product_id INT(6),
+    quantity INT,
     price DECIMAL(10,2),
     FOREIGN KEY (order_id) REFERENCES orders(id),
     FOREIGN KEY (product_id) REFERENCES products(id)
