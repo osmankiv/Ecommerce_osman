@@ -1,5 +1,6 @@
 <?php
-include '/config/database.php';
+session_start();
+include '../../config/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $username = $_POST['user_name'];
@@ -15,12 +16,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $row = $result->fetch_assoc();
 
         if (password_verify($password, $row['password_hash'])) {
-            echo 'Login successful';
+            $_SESSION['user_id'] = $row['id'];
+            header("Location: ../indexx.php");
+            exit(); 
         } else {
-            echo "Invalid password";
+            echo "خطأ في بيانات تسجيل الدخول"; 
         }
     } else {
-        echo 'Username not found!';
+        echo 'خطأ في بيانات تسجيل الدخول';
     }
 
     $stmt->close();

@@ -12,6 +12,9 @@
     <header class="payment-page">
         <div class="container">
             <form action="process_payment.php" method="POST" class="information">
+
+                <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+
                 <div class="left">
                     <h3>BILLING ADDRESS</h3>
                     Full name
@@ -81,7 +84,6 @@
                     <div class="show-products">
                         <h3>Products</h3>
                         <select id="product-list" name="products">
-                            <!-- سيتم تعبئة الخيارات عبر JavaScript -->
                         </select>
                         <div class="total-price" id="total-price">
                             Total: $0.00
@@ -109,7 +111,7 @@
                 $('#total-price').text('Total: $' + total.toFixed(2));
             });
 
-            $('#total-price-input').val(total.toFixed(2)); // تعيين القيمة في الحقل المخفي
+            $('#total-price-input').val(total.toFixed(2));
 
             $('input[name="payment_method"]').change(function() {
                 if ($('#bok').is(':checked')) {
