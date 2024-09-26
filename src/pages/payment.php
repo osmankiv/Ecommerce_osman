@@ -1,4 +1,53 @@
 <!DOCTYPE html>
+
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    echo '
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>تنبيه</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f0f0f0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+            .alert {
+                background-color: #ffffff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+            .alert h2 {
+                color: #d9534f;
+            }
+            .alert a {
+                text-decoration: none;
+                color: #4CAF50;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="alert">
+            <h2>تنبيه!</h2>
+            <p>يرجى تسجيل الدخول أولاً.</p>
+            <a href="login.php">الذهاب إلى صفحة تسجيل الدخول</a>
+        </div>
+    </body>
+    </html>';
+    exit();
+}
+$user_id = $_SESSION['user_id'];
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -41,7 +90,7 @@
                         </label>
                         <label for="">
                             Zip code
-                            <input type="number" id="zip-code" name="zip_code" placeholder="Zip code">
+                            <input type="text" id="zip-code" name="zip_code" placeholder="Zip code">
                         </label>
                     </div>
                 </div>
@@ -77,14 +126,14 @@
                         </label>
                         <label for="cvv" id="cvv-label">
                             CVV
-                            <input type="number" id="cvv" name="cvv" placeholder="CVV">
+                            <input type="text" id="cvv" name="cvv" placeholder="CVV">
                         </label>
                     </div>
 
                     <div class="show-products">
-                        <h3>Products</h3>
+                        <!-- <h3>Products</h3>
                         <select id="product-list" name="products">
-                        </select>
+                        </select> -->
                         <div class="total-price" id="total-price">
                             Total: $0.00
                         </div>
@@ -98,20 +147,20 @@
     </header>
     <script>
         $(document).ready(function() {
-            let cart = [
-                {name:"product 1",price:10.00},
-                {name:"product 2",price:20.00},
-                {name:"product 3",price:30.00}
-            ];
+            // let cart = [
+            //     {name:"product 1",price:10.00},
+            //     {name:"product 2",price:20.00},
+            //     {name:"product 3",price:30.00}
+            // ];
 
-            let total = 0;
-            cart.forEach(function(item) {
-                $('#product-list').append(`<option value="${item.price}">${item.name} - $${item.price.toFixed(2)}</option>`);
-                total += item.price;
-                $('#total-price').text('Total: $' + total.toFixed(2));
-            });
+            // let total = 0;
+            // cart.forEach(function(item) {
+            //     $('#product-list').append(`<option value="${item.price}">${item.name} - $${item.price.toFixed(2)}</option>`);
+            //     total += item.price;
+            //     $('#total-price').text('Total: $' + total.toFixed(2));
+            // });
 
-            $('#total-price-input').val(total.toFixed(2));
+            // $('#total-price-input').val(total.toFixed(2));
 
             $('input[name="payment_method"]').change(function() {
                 if ($('#bok').is(':checked')) {
@@ -124,6 +173,61 @@
                     $('#card-number').attr('placeholder', 'Enter card number');
                 }
             });
+            $('form').on('submit', function(event) {
+            let accountNumber = $('#card-number').val();
+            let paymentMethod = $('input[name="payment_method"]:checked').val();
+            let fullName = $('#full-name').val().trim();
+            let email = $('#email').val().trim();
+            let address = $('#address').val().trim();
+            let zipCode = $('#zip-code').val().trim();
+            let cvv = $('#cvv').val().trim();
+            // let paymentMethod = $('input[name="payment_method"]:checked').val();
+
+            if (!paymentMethod) {
+                event.preventDefault();
+                alert("يرجى اختيار طريقة الدفع (BOK أو Visa).");
+            } else if (paymentMethod === 'bok') {
+
+                if (!accountNumber) {
+                    event.preventDefault();
+                    alert("يرجى إدخال رقم الحساب.");
+                } else if (accountNumber.length !== 10 || isNaN(accountNumber)) {
+                    event.preventDefault();
+                    alert("رقم الحساب يجب أن يكون 10 خانات من الأرقام.");
+                }
+            }else if (paymentMethod === 'visa') {
+                
+                if (!fullName) {
+
+                    event.preventDefault();
+                    alert("يرجى إدخال الاسم الكامل.");
+                    
+                }
+                if (!email || !email.includes('@')) {
+                    event.preventDefault();
+                    alert("يرجى إدخال بريد إلكتروني صحيح.");
+                }
+
+                if (!address) {
+                    event.preventDefault();
+                    alert("يرجى إدخال العنوان.");
+                }
+                
+                if (!cvv || cvv.length !== 3 || isNaN(cvv)) {
+                    event.preventDefault();
+                    alert("يرجى إدخال CVV مكون من 3 خانات.");
+                }
+                if (!zipCode || zipCode.length < 5) {
+                    event.preventDefault();
+                    alert( " يرجى ادخال رمز zipcode صحيح مكون من خمسة ارقام");
+                }
+                let city = $('#city').val().trim();
+            if (!city) {
+                event.preventDefault();
+                alert("يرجى إدخال المدينة.");
+            }
+            }
+        });
         });
     </script>
 </body>

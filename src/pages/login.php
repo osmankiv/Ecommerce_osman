@@ -1,7 +1,7 @@
 <?php
-session_start();
 include '../../config/database.php';
 
+session_start();
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $username = $_POST['user_name'];
     $password = $_POST['password'];
@@ -29,4 +29,5 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $stmt->close();
     $conn->close();
 }
+
 ?>
