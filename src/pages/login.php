@@ -20,14 +20,21 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             header("Location: ../indexx.php");
             exit(); 
         } else {
-            echo "خطأ في بيانات تسجيل الدخول"; 
+            $error_message = "خطأ في بيانات تسجيل الدخول";  
         }
     } else {
-        echo 'خطأ في بيانات تسجيل الدخول';
+        $error_message = "خطأ في بيانات تسجيل الدخول"; 
     }
 
     $stmt->close();
     $conn->close();
+}
+if (!empty($error_message)) {
+    echo "<script>
+        alert('$error_message');
+        window.location.href = 'login.html';
+    </script>";
+    exit();
 }
 
 ?>

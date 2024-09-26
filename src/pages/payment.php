@@ -2,6 +2,8 @@
 
 <?php
 session_start();
+include '../../config/database.php';
+$total_price = isset($_GET['total']) ? floatval($_GET['total']) : 0.00;
 if (!isset($_SESSION['user_id'])) {
     echo '
     <!DOCTYPE html>
@@ -40,7 +42,7 @@ if (!isset($_SESSION['user_id'])) {
         <div class="alert">
             <h2>تنبيه!</h2>
             <p>يرجى تسجيل الدخول أولاً.</p>
-            <a href="login.php">الذهاب إلى صفحة تسجيل الدخول</a>
+            <a href="login.html?total=<?php echo $total; ?>">الذهاب إلى صفحة تسجيل الدخول</a>
         </div>
     </body>
     </html>';
@@ -63,6 +65,7 @@ $user_id = $_SESSION['user_id'];
             <form action="process_payment.php" method="POST" class="information">
 
                 <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+                <input type="hidden" name="total_price" value="<?php echo number_format($total_price, 2); ?>">
 
                 <div class="left">
                     <h3>BILLING ADDRESS</h3>
