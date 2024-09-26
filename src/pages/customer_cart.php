@@ -56,7 +56,6 @@
                             echo "<tr>
                                     <td>{$row['products_name']}</td>
                                     <td>" . number_format($row['products_price'], 2) . "$</td>
-                                    
                                     <td>
                                         <form method='POST' action='customer_cart.php?id={$row['id']} ' style='display:inline;'>
                                             <input type='hidden' name='remove_id' value='{$row['id']}'>
