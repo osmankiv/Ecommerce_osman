@@ -8,6 +8,9 @@ include "../../config/database.php";
 // 
  }
 }
+ if(isset($_GET['id'])){
+    $id=$_GET['id'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -28,12 +31,12 @@ include "../../config/database.php";
         <header>
             <nav>
                 <div class="logo">
-                    <img src="../assets/images/images/payment_methods/72x72/mollie.png" alt="">
+                    <img src="../assets/images/payment_methods/72x72/mollie.png" alt="">
                 </div>
                 <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="#">Products</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="../index.php">Home</a></li>
+                    <li><a href="../pages/product_details.php?id=<?=$id?>">Products</a></li>
+                    <!-- <li><a href="#">Contact</a></li> -->
                     <li><a href="login.html">Login</a></li>
                 </ul>
             </nav>
@@ -41,8 +44,9 @@ include "../../config/database.php";
 
         <main>
             <?php
-            $id=$_GET['id'];
-
+                if(isset($_GET['id'])){
+                    $id=$_GET['id'];
+               
                $stmt= "SELECT * FROM `products` WHERE `id`=$id";
                 $result=$conn->query($stmt);
                 if($result->num_rows > 0 ){
@@ -52,7 +56,8 @@ include "../../config/database.php";
                         $products_description=$row["products_description"];
                         $products_price=      $row["products_price"];
                         $products_image_url=  $row["products_image_url"];
-                        $products_type=       $row["products_type"]; ?>
+                        $products_type=       $row["products_type"];
+                } ?>
             <div class="product-details">
                 <div class="product-image">
                     <img src="../assets/images/<?=$products_image_url?>" alt="">

@@ -47,7 +47,11 @@ if(isset($_GET['add_to_card'])){
                
                 <li><a href="#bookes">parts</a></li>
                 <li><a href="pages/logout.php">log out</a></li>
-                <li><a href="pages/control_panel.php">control</a></li>
+                <?php
+                if($_SESSION["username"]){
+                echo'<li><a href="pages/control_panel.php">control</a></li>';
+                }
+                ?>
                 <li><a href="pages/login.html">log,in</a></li>
                 <li class="one"><a href="index.html">Home</a></li>
                 <li>
@@ -103,7 +107,9 @@ if(isset($_GET['add_to_card'])){
                                                     <div class="name_discraption"><?=$products_description?><div>
                                                     <div class="pric"><?=$products_price?></div>
                                                 </a>
-                                                <button type="submit" class="buy"     name="buy_prodcet">buy</button>
+                                                <a href="pages/payment.html">
+                                                    <button type="submit" class="buy"name="buy_prodcet"><a href="pages/payment.html">buy</a></button>
+                                                </a>
                                                 <button type="submit" class="add_to_card"     name="add_to_card" value="<?=$row["id"]?>" onclick="addOrders()">add to card</button>
                                             </div>
                                         </div>
@@ -192,7 +198,9 @@ if(isset($_GET['add_to_card'])){
                                                                       <div class="pric"><?=$products_price?></div>
                                                                   </a>
 
-                                                                  <button type="submit" class="buy"     name="buy_prodcet">buy</button>
+                                                                  <a href="pages/payment.html">
+                                                    <button type="submit" class="buy"name="buy_prodcet"><a href="pages/payment.html">buy</a></button>
+                                                </a>
                                                                   <button type="submit" class="add_to_card"      name="add_to_card" value="<?=$row["id"]?>" onclick="addOrders()">add to card</button>
                                                                 </div>
                                                             </div>
@@ -242,7 +250,9 @@ if(isset($_GET['add_to_card'])){
                                                                       <div class="pric"><?=$products_price?></div>
                                                                   </a>
 
-                                                                  <button type="submit" class="buy"     name="buy_prodcet">buy</button>
+                                                                  <a href="pages/payment.html">
+                                                    <button type="submit" class="buy"name="buy_prodcet"><a href="pages/payment.html">buy</a></button>
+                                                </a>
                                                                   <button type="submit" class="add_to_card"     name="add_to_card" value="<?=$row["id"]?>"
                                                                       onclick="addOrders()">add to
                                                                       card</button>

@@ -11,7 +11,7 @@
         <nav>
             <ul>
                 <li><a href="../index.php">Home</a></li>
-                <li><a href="product_details.html">Products</a></li>
+                <!-- <li><a href="product_details.html">Products</a></li> -->
                 <li><a href="" class="active">Cart</a></li>
                 <li><a href="../pages/payment.html">Checkout</a></li>
             </ul>
@@ -72,10 +72,10 @@
                     $userid=$_SESSION["userid"];
                     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_id'])) {
                         $d_id=$_GET['id'];
-                        echo $d_id;
+                       
                         $sqlDelete = "DELETE FROM `order_items` WHERE `product_id` = $d_id";
                         if($conn->query($sqlDelete)){
-                            echo "done";
+                           
                         }
                         else{
                             echo $conn->error;

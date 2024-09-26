@@ -23,7 +23,7 @@ include "../../config/database.php";
 
         <ul>
             
-            <li><a href="#">control</a></li>
+            <!-- <li><a href="#">control</a></li> -->
             <li><a href="pages/login.html">log,in</a></li>
             <li class="one"><a href="/Ecommerce/src/index.php">Home</a></li>
             <li>
