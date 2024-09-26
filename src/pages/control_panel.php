@@ -32,35 +32,35 @@
                         $result=$conn->query($stmt);
                         if($result->num_rows > 0 ){
                             while($row = $result->fetch_assoc()){
-                                echo"
-                                    <form action=control_panel.php method=POST  class=form >
+                                ?>
+                                    <form action="updata.php?pr_id=<?=$id?>" method="POST"  class="form" >
+                                        
                                         <h3> updata PRODUCTS</h3>
 
                                         <label>products name</label>
-                                        <input type=text name=products_name value=".$row['products_name']."></input>
+                                        <input type="text" name="products_name" value="<?=$row['products_name']?>"></input>
 
 
                                          <label>products descrription</label>
-                                        <input type=text name=products_descrription  value=".$row['products_description']."></      input>
+                                        <input type="text" name="products_descrription"  value="<?=$row['products_description']?>"></input>
 
                                          <label>products price</label>
-                                        <input type=number name=products_price  value=".$row['products_price']."></input>
-                                        <div class=rite>
+                                        <input type="number" name="products_price"  value="<?=$row['products_price']?>"></input>
+                                        <div class="rite">
                                             <label>products image</label>
-                                            <input type=file name=products_image  value=".$row['products_image_url']."></input>
+                                            <input type="file" name="products_image"  value=""></input>
 
                                             <label>products type </label>
-                                            <input type=text name=products_type  value=".$row['products_type']."></input>
+                                            <input type="text" name="products_type"  value="<?=$row['products_type']?>"></input>
                                         </div>
 
-                                         <button name=Update_data> Update</button>
+                                        
+
+                                         <button name="Update_data">  Update data</button>
                 
-                                    </form>";
-                                    if(isset($_POST['Update_data'])){
-                                        $id=$row['id'];
-                                        $updata="UPDATE `products` SET `products_name`='[value-2]',`products_description`='[value-3]',`products_price`='[value-4]',`products_image_url`='[value-5]',`products_type`='[value-6]' WHERE `id`=$id";
-                                        echo"dddd";
-                                    }
+                                    </form>
+                                    <?php
+                                   
                             }
                         }
                         
@@ -74,7 +74,7 @@
         ?>
         <main>
             
-            <form action="control_panel.php" method="POST"  class="form" >
+            <form action="control_panel.php" method="POST" enctype="multipart/form-data" class="form" >
                 <div class="funtion">
                     <label>delete /updata</label>
                     <input type="number" name="pr_id" >
@@ -89,18 +89,29 @@
             
             <?php
             
-            if(isset($_POST['add'])){
+            // if(isset($_POST['add'])){
               
-                $products_name=$_POST['products_name'];
-                $products_descrription=$_POST['products_descrription'];
-                $products_price=$_POST['products_price'];
-                $products_image=$_POST['products_image'];
-                $products_type=$_POST['products_type'];
-                $stmt="INSERT INTO `products`(`id`, `products_name`, `products_description`, `products_price`, `products_image_url`, `products_type`) VALUES (null,'$products_name','$products_descrription','$products_price','$products_image','$products_type')";
-                 $conn->query($stmt);
+            //     $products_name=$_POST['products_name'];
+            //     $products_descrription=$_POST['products_descrription'];
+            //     $products_price=$_POST['products_price'];
+            //     $products_image=$_FILES['products_image']["name"];
+            //     $products_type=$_POST['products_type'];
+            //     $stmt="INSERT INTO `products`(`id`, `products_name`, `products_description`, `products_price`, `products_image_url`, `products_type`) VALUES (null,'$products_name','$products_descrription','$products_price','$products_image','$products_type')";
+                
+            //     //uplode tha files "the imeg if item
+            //     $itme_dir = "";
+            //     $name=$_FILES["products_image"]["name"];
+            //     $temp=$_FILES["products_image"]["tmp_name"];
+            //     $file_dir = dirname(__FILE__).$itme_dir.$name;
+            //     if(move_uploaded_file($temp,$file_dir)){
+            //         echo"done uplod";
+            //     }
+               
+
+            //      $conn->query($stmt);
 
 
-            }
+            // }
 
                         
                
@@ -118,7 +129,7 @@
             </div>
            
             
-            <form action="control_panel.php" method="POST"  class="form" >
+            <form action="../assets/images/add.php" method="POST"  enctype="multipart/form-data" class="form" >
                 <h3> ADD PRODUCTS</h3>
       
                 <label>products name</label>

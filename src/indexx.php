@@ -33,7 +33,7 @@ include "../config/database.php";
                     </div>
                 </li>
             </ul>
-            <form action="index.php" method="POST"  class="form">
+            <form action="indexx.php" method="POST"  class="form">
                 <div class="search_box_ginral ">
                     <input type="text" placeholder="search " name="search_box" class="search_box">
                     <button name="search" class="search_button" type="submit"> <img src=" assets/images/search.png"
@@ -62,8 +62,8 @@ include "../config/database.php";
                                              <div class="part_prodect">
                                                  <div class="card_prodect">
                                                    <a href="pages/product_details.html"> <!-- need to code-->
-                                                       <img src=" '.$products_image_url.'"
-                                                           alt="">
+                                                     <img src="/Ecommerce/src/assets/images/'.$products_image_url.'"
+                                                           alt="img">
                                                        <div class="name_prodect"><'.$products_name.'</div>
                                                        <div class="name_discraption"><'. $products_description.   '<div>
 
@@ -154,21 +154,20 @@ include "../config/database.php";
                                                 $products_type=       $row["products_type"];
                                             
 
-                                                echo'  
-                                                 
+                                              
+                                                    ?>
                                                         <div class="sub_items_contner">
                                                             <div class="part_prodect">
                                                                 <div class="card_prodect">
                                                                   <a href="pages/product_details.html"> <!-- need to code-->
-                                                                      <img src=" '.$products_image_url.'"
-                                                                          alt="">
-                                                                      <div class="name_prodect"><'.$products_name.'</div>
-                                                                      <div class="name_discraption"><'. $products_description.   '<div>
+                                                                      <img src="/Ecommerce/src/assets/images/<?=$products_image_url?>" alt="img">
+                                                                      <div class="name_prodect"><?=$products_name?></div>
+                                                                      <div class="name_discraption"><?=$products_description?><div>
 
-                                                                      <div class="pric">'.$products_price.'</div>
+                                                                      <div class="pric"><?=$products_price?></div>
                                                                   </a>
 
-                                                                  <button type="submit" class="buy"     name="buy_prodcet">buy</    button>
+                                                                  <button type="submit" class="buy"     name="buy_prodcet">buy</button>
                                                                   <button type="submit" class="add_to_card"     name="buy_prodcet"
                                                                       onclick="addOrders()">add to
                                                                       card</button>
@@ -176,8 +175,8 @@ include "../config/database.php";
                                                             </div>
                                                         </div>
                                                    
-                                                    ';
-                                                    
+                                                  
+                                            <?php     
                                             }
                                         }
 
@@ -190,6 +189,7 @@ include "../config/database.php";
                     </article>
                     <article>
                         <h3 id="bookes"> part2 </h3>
+                                 <div class="items">
                        
                                     <?php
                                         $stmt= "SELECT * FROM `products`";
@@ -204,34 +204,34 @@ include "../config/database.php";
                                                 $products_type=       $row["products_type"];
                                             
 
-                                                echo'  
-                                                    <div class="items">
+                                              
+                                                    ?>
                                                         <div class="sub_items_contner">
                                                             <div class="part_prodect">
                                                                 <div class="card_prodect">
                                                                   <a href="pages/product_details.html"> <!-- need to code-->
-                                                                      <img src=" '.$products_image_url.'"
-                                                                          alt="">
-                                                                      <div class="name_prodect"><'.$products_name.'</div>
-                                                                      <div class="name_discraption"><'. $products_description.   '<div>
-                                                
-                                                                      <div class="pric">'.$products_price.'</div>
+                                                                      <img src="/Ecommerce/src/assets/images/<?=$products_image_url?>" alt="img">
+                                                                      <div class="name_prodect"><?=$products_name?></div>
+                                                                      <div class="name_discraption"><?=$products_description?><div>
+
+                                                                      <div class="pric"><?=$products_price?></div>
                                                                   </a>
-                                                
-                                                                  <button type="submit" class="buy"     name="buy_prodcet">buy</    button>
+
+                                                                  <button type="submit" class="buy"     name="buy_prodcet">buy</button>
                                                                   <button type="submit" class="add_to_card"     name="buy_prodcet"
                                                                       onclick="addOrders()">add to
                                                                       card</button>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    ';
-                                                    
+                                                   
+                                                  
+                                            <?php     
                                             }
                                         }
 
                                     ?>
+                                </div>
                                     <!--------------------------------------------------------------------------------------------------->
                           
                     </article>

@@ -27,7 +27,7 @@ include "../../config/database.php";
             <li><a href="#cars">cars</a></li>
             <li><a href="#">haues</a></li>
             <li><a href="pages/login.html">log,in</a></li>
-            <li class="one"><a href="index.html">Home</a></li>
+            <li class="one"><a href="/Ecommerce/src/indexx.php">Home</a></li>
             <li>
                 <div class="shopping">
                     <img src="../assets/images/shopping.svg">
