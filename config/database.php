@@ -1,86 +1,73 @@
 <?php
-$host="localhost";
-$user_name="root";
-$password="";
-$database_name="mollie";
-$conn=new mysqli($host,$user_name,$password,$database_name); //if you clone ->$conn=new mysqli($host,$user_name,$password) and $database_name=""
+$host = "localhost";
+$user_name = "root";
+$password = "";
+$database_name = "mollie";
 
+// إنشاء الاتصال بقاعدة البيانات
+$conn = new mysqli($host, $user_name, $password);
 
-/*
-//crrat  tha database//
-$conn=new mysqli($host,$user_name,$password);
-//connection is done?
-if($conn->connect_error){
-    echo "$conn->connect_error";
-}
-else{
-   echo"contion is done";
-
-    //craate database "mollie"
-    if($database_name === ""){
-        $sql_query_craate_database="CREATE DATABASE mollie";
-        if($conn->query($sql_query_craate_database) === true){
-        echo "crate database sccessfully ";
-        $database_name="mollie";
-        
-    }
-}
-else{
-   echo"<br>
-   can't craate database '".$conn->error;
-}
-$conn=new mysqli($host,$user_name,$password,$database_name);
-        $sql_query_craate_table1="CREATE TABLE products( 
-            id INT (6),
-            products_name TEXT (10),
-            products_description TEXT (200),
-            products_price INT (10),
-            products_image_url TEXT(200),
-            products_type TEXT (100)
-            )";
-            $sql_query_craate_table2="CREATE TABLE users( 
-            id INT (6),
-            username TEXT (10),
-            products_description TEXT (200),
-            email TEXT (10),
-            passwerd_hash TEXT(200),
-            geder TEXT(200)
-            )";
-            $sql_query_craate_table3="CREATE TABLE orders( 
-            id INT (6),
-            user_id TEXT (6),
-            total_price INT (10),
-            payment_method TEXT(200)
-            )";
-            $sql_query_craate_table4="CREATE TABLE order_items( 
-            id INT (6),
-            order_id INT (10),
-            product_id INT  (200),
-            price INT (100)
-            
-            )";
-
-        if($conn->query($sql_query_craate_table1) === true && $conn->query($sql_query_craate_table2) === true && $conn->query($sql_query_craate_table3) === true && $conn->query($sql_query_craate_table4) === true){
-
-       echo" done craate products table";
-        }
-        else{
-       echo"<br>
-       can't craate table '".$conn->error;
-
-            }
-    
-
-
-
+// التحقق من الاتصال
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
+// إنشاء قاعدة البيانات إذا لم تكن موجودة
+$sql_query_create_database = "CREATE DATABASE IF NOT EXISTS $database_name";
+if ($conn->query($sql_query_create_database) === TRUE) {
+    // echo "Database created successfully or already exists.<br>";
+} else {
+    echo "Error creating database: " . $conn->error . "<br>";
+}
 
-//$conn->close();
+// إعادة الاتصال بقاعدة البيانات بعد إنشائها
+$conn = new mysqli($host, $user_name, $password, $database_name);
 
+// إنشاء الجداول
+$sql_query_create_table1 = "CREATE TABLE IF NOT EXISTS products (
+    id INT(6) AUTO_INCREMENT PRIMARY KEY,
+    products_name VARCHAR(100),
+    products_description TEXT,
+    products_price INT,
+    products_image_url VARCHAR(200),
+    products_type VARCHAR(100)
+)";
 
+$sql_query_create_table2 = "CREATE TABLE IF NOT EXISTS users (
+    id INT(6) AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50),
+    email VARCHAR(100),
+    password_hash VARCHAR(200),
+    gender VARCHAR(10)
+)";
 
+$sql_query_create_table3 = "CREATE TABLE IF NOT EXISTS orders (
+    id INT(6) AUTO_INCREMENT PRIMARY KEY,
+    user_id INT(6),
+    total_price DECIMAL(10,2),
+    payment_method ENUM('visa','Bok')
+    -- FOREIGN KEY (user_id) REFERENCES users(id)
+)";
 
+$sql_query_create_table4 = "CREATE TABLE IF NOT EXISTS order_items (
+    id INT(6) AUTO_INCREMENT PRIMARY KEY,
+    order_id INT(6),
+    product_id INT(6),
+    price DECIMAL(10,2), 
+    user_id INT(6)
+    -- FOREIGN KEY (order_id) REFERENCES orders(id)
+    -- FOREIGN KEY (product_id) REFERENCES products(id) 
+)";
 
-*/
+// تنفيذ استعلامات إنشاء الجداول
+if ($conn->query($sql_query_create_table1) === TRUE &&
+    $conn->query($sql_query_create_table2) === TRUE &&
+    $conn->query($sql_query_create_table3) === TRUE &&
+    $conn->query($sql_query_create_table4) === TRUE) {
+    // echo "All tables created successfully.";
+} else {
+    die ("Error creating tables: " . $conn->error);
+}
+
+// $conn->close();
 ?>
