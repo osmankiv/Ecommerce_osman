@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html lang="ar">
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/css/login.css">
-    <title>MOLLIE</title>
-</head>
-<body>
-    <header>
-        <nav>
+
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../assets/css/login.css">
+        <title>MOLLIE</title>
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="../index.php">Home</a></li>
+                    <li><a href="#">Log In</a></li>
+                    <li><a href="Sign_Up.html">Sign Up</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="l_b_g"></div>
+        <div class="R_b_g"></div>
+        <div class="backgrauend"></div>
+
+        <form action="login.php" method="POST" class="form">
+            <img src="../assets/images/admin_notes/dashboard-widget-setup.png" class="img">
+            <h3>Sign In to Your Account</h3>
+            <input type="text" name="user_name" placeholder="Username or @gmail" required>
+            <input type="password" name="password" placeholder="*****************" required>
+            <button type="submit">Log In</button>
+            You need an account? <a href="Sign_Up.html">Sign Up</a>
+            <br>
+            <hr>
+            <h5>Log in with</h5>
+            <hr>
             <ul>
-                <li><a href="../indexx.php">Home</a></li>
-                <li><a href="#">Log In</a></li>
-                <li><a href="/Sin_Up.html">Sign Up</a></li>
+                <li><a href="#"><img src="../assets/images/google.svg" alt="Google"></a></li>
+                <li><a href="#"><img src="../assets/images/facebook.svg" alt="Facebook"></a></li>
+                <li><a href="#"><img src="../assets/images/5296765_camera_instagram_instagram logo_icon.png"
+                            alt="Instagram"></a></li>
             </ul>
-        </nav>
-    </header>
+        </form>
 
-    <div class="l_b_g"></div>
-    <div class="R_b_g"></div>
-    <div class="backgrauend"></div>
+        <div class="backgrauend2"></div>
 
-    <form action="login.php" method="POST" class="form">
-        <img src="../assets/images/admin_notes/dashboard-widget-setup.png" class="img">
-        <h3>Sign In to Your Account</h3>
-        <input type="text" name="user_name" placeholder="Username or @gmail" required>
-        <input type="password" name="password" placeholder="*****************" required>
-        <button type="submit">Log In</button>
-        You need an account? <a href="Sign_Up.html">Sign Up</a>
-        <br>
-        <hr>
-        <h5>Log in with</h5>
-        <hr>
-        <ul>
-            <li><a href="#"><img src="../assets/images/onboarding/google.svg" alt="Google"></a></li>
-            <li><a href="#"><img src="../assets/images/onboarding/facebook.png" alt="Facebook"></a></li>
-            <li><a href="#"><img src="../assets/images/onboarding/creative-mail-by-constant-contact.png" alt="Instagram"></a></li>
-        </ul>
-    </form>
+        <footer>
+            <h6 class="copyreit">Design by Osanco</h6>
+        </footer>
+    </body>
 
-    <div class="backgrauend2"></div>
-
-    <footer>
-        <h6 class="copyreit">Design by Osanco</h6>
-    </footer>
-</body>
 </html>
