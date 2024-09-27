@@ -12,7 +12,8 @@
 // imprt database conntion
 include "../config/database.php";
   session_start();
-  if($_SESSION["log_in"]){
+  $_SESSION["userid"]=0;
+  if(isset($_SESSION["log_in"])){
  if($_SESSION["log_in"]== true){
    echo"Wlcome ".$_SESSION["username"];
     $userid=$_SESSION["userid"];
@@ -48,8 +49,11 @@ if(isset($_GET['add_to_card'])){
                 <li><a href="#bookes">parts</a></li>
                 <li><a href="pages/logout.php">log out</a></li>
                 <?php
-                if($_SESSION["username"]== "admin"){
+                if(isset($_SESSION["username"])){
+                    if($_SESSION["username"]== "admin"){
+
                 echo'<li><a href="pages/control_panel.php">control</a></li>';
+                }
                 }
                 ?>
                 <li><a href="pages/login.html">log,in</a></li>
@@ -60,11 +64,15 @@ if(isset($_GET['add_to_card'])){
                         <img src="assets/images/shopping.svg">
                         <span class="quantity" id="quantity">
                             <?php
-                                   
+                                if(isset($_SESSION["userid"])){
                                 $userid=$_SESSION["userid"];
                                 $stmt ="SELECT * FROM `order_items` WHERE `user_id`= '$userid'";
                                 $result=$conn->query($stmt);
                                 echo $result->num_rows;
+                                }
+                                else{
+                                    echo"0";
+                                }
                             
                             
                             ?></span>
