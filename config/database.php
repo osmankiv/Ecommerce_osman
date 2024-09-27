@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 
 $sql_query_create_database = "CREATE DATABASE IF NOT EXISTS $database_name";
 if ($conn->query($sql_query_create_database) === TRUE) {
-    echo "Database created successfully or already exists.<br>";
+    // echo "Database created successfully or already exists.<br>";
 } else {
     echo "Error creating database: " . $conn->error . "<br>";
 }
@@ -66,7 +66,7 @@ if ($conn->query($sql_query_create_table1) === TRUE &&
     $conn->query($sql_query_create_table2) === TRUE &&
     $conn->query($sql_query_create_table3) === TRUE &&
     $conn->query($sql_query_create_table4) === TRUE) {
-    echo "All tables created successfully.";
+    // echo "All tables created successfully.";
 } else {
     die ("Error creating tables: " . $conn->error);
 }
