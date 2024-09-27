@@ -3,7 +3,7 @@ session_start();
 include '../../config/database.php';
 
 $user_id = isset($_POST['user_id']) ? intval($_POST['user_id']) : 0;
-$total_price = isset($_POST['total_price']) ? floatval($_POST['total_price']) : 0.00;
+$total_price = isset($_POST['total_price']) ? floatval($_POST['total_price']) : 0;
 if ($total_price <= 0) {
     $total_price = 50.00;
 }
@@ -60,10 +60,13 @@ if ($user_id && $total_price > 0 && !empty($payment_method)) {
             <div class="confirmation-message">
                 <h2>تمت إضافة الطلب بنجاح!</h2>
                 <p>شكرًا لك على الشراء. سيتم معالجة طلبك قريبًا.</p>
-                <a href="../indexx.php" style="text-decoration: none; color: #4CAF50;">العودة إلى الصفحة الرئيسية</a>
+                <a href="../index.php" style="text-decoration: none; color: #4CAF50;">العودة إلى الصفحة الرئيسية</a>
             </div>
         </body>
         </html>';
+        $userid=$_SESSION["userid"];
+        $sqlDelete = "DELETE FROM `order_items` WHERE `user_id` = $userid";
+        $conn->query($sqlDelete);
 
     } else {
         echo "Error: " . $stmt->error;

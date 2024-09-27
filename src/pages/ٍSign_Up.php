@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <script>
         function redirectToHome() {
             setTimeout(function() {
-                window.location.href = '../indexx.php';
+                window.location.href = '../index.php';
             }, 3000);
         }
     </script>

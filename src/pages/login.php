@@ -16,8 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $row = $result->fetch_assoc();
 
         if (password_verify($password, $row['password_hash'])) {
-            $_SESSION['user_id'] = $row['id'];
-            header("Location: ../indexx.php");
+            $_SESSION['userid'] = $row['id'];
+            $_SESSION["username"]= $row['username'];
+            $_SESSION["log_in"]= true;
+            header("Location: ../index.php");
             exit(); 
         } else {
             $error_message = "خطأ في بيانات تسجيل الدخول";  

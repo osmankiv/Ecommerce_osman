@@ -138,9 +138,9 @@ $user_id = $_SESSION['user_id'];
                         <select id="product-list" name="products">
                         </select> -->
                         <div class="total-price" id="total-price">
-                            Total: $0.00
+                            <?=$total_price?>$
                         </div>
-                        <input type="hidden" name="total_price" id="total-price-input" value="0.00">
+                        <input type="hidden" name="total_price" id="total-price-input" value="<?=$total_price?>">
                     </div>
 
                     <input type="submit" class="checkout" value="Payment">
