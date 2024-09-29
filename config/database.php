@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 
 $sql_query_create_database = "CREATE DATABASE IF NOT EXISTS $database_name";
 if ($conn->query($sql_query_create_database) === TRUE) {
-    // echo "Database created successfully or already exists.<br>";
+    echo "Database created successfully or already exists.<br>";
 } else {
     echo "Error creating database: " . $conn->error . "<br>";
 }
@@ -66,7 +66,18 @@ if ($conn->query($sql_query_create_table1) === TRUE &&
     $conn->query($sql_query_create_table2) === TRUE &&
     $conn->query($sql_query_create_table3) === TRUE &&
     $conn->query($sql_query_create_table4) === TRUE) {
-    // echo "All tables created successfully.";
+    echo "All tables created successfully.";
+  
+    //$ins='INSERT INTO `users` (`id`, `username`, `email`, `password_hash`, `gender`) VALUES (1, "admin", "admin@gmailcom","$2y$10$M0LAQwi5FRksDkB.SKKxpO.0rAALfx8ypg0mBdw/7bCbcSkH.ZN/m","male"';
+
+    // $ins="INSERT INTO `users`(`id`, `username`, `email`, `password_hash`, `gender`) VALUES (null,'admin','admin@gmailcom','$2y$10.SKKxpO.0rAALfx8ypg0mBdw/7bCbcSkH.ZN/m','male')";
+
+    // if($conn->query($ins) === true){
+    //     echo"done";
+    // } else{
+    //    echo $conn->error;
+    // }
+
 } else {
     die ("Error creating tables: " . $conn->error);
 }
