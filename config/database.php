@@ -43,6 +43,7 @@ $sql_query_create_table3 = "CREATE TABLE IF NOT EXISTS orders (
     user_id INT(6),
     total_price DECIMAL(10,2),
     payment_method ENUM('visa', 'Bok'),
+    card_number VARCHAR(10),
     cvv VARCHAR(4),
     address VARCHAR(255),
     zip_code VARCHAR(10),
